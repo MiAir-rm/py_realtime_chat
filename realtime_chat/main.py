@@ -12,8 +12,8 @@ def initArgumentParser(ap):
     ap.add_argument('url', help = '视频网址')
     ap.add_argument('--output', help = '输出文件(默认stdout)', 
         type = FileType('w', encoding='utf-8'), default = sys.stdout)
-    ap.add_argument('--format', help = '输出内容格式(默认ass)',
-        choices = ['csv', 'ass'])
+    ap.add_argument('--format', help = '输出内容格式(默认csv)',
+        choices = ['csv', 'ass'], default = 'csv')
     return ap
 
 @console_entry(initArgumentParser)
