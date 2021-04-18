@@ -1,0 +1,43 @@
+{
+	"build_systems":
+	[
+		{
+			"encoding": "utf-8",
+			"env":
+			{
+				"PYTHONHOME": "D:/Anaconda3",
+				"PYTHONIOENCODING": "utf-8"
+			},
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "run singal file",
+			"selector": "source.python",
+			"shell_cmd": "D:/Anaconda3/python $file",
+			"working_dir": "$folder"
+		},
+		{
+			"encoding": "utf-8",
+			"env":
+			{
+				"PYTHONHOME": "D:/Anaconda3",
+				"PYTHONIOENCODING": "utf-8"
+			},
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "run testcase",
+			"selector": "source.python",
+			"shell_cmd": "D:/Anaconda3/python -m test.main",
+			"working_dir": "$folder"
+		},
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"python\" -u \"$file\""
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
