@@ -32,7 +32,7 @@ class ChatDownloader(object):
             chat = Chat(
                 uid = data['author']['id'],
                 username = data['author']['name'],
-                timestamp = data['timestamp'] / 1000,
+                timestamp = data['timestamp'] / 1000000,
                 message = data['message']
             )
             self.__chats.put(chat)
