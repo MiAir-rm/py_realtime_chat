@@ -39,7 +39,7 @@ class Chats(object):
                 index += 1
             else:
                 self.__update_event.clear()
-                self.__update_event.wait()
+                self.__update_event.wait(20)
 
     @property
     def start_timestamp(self):
