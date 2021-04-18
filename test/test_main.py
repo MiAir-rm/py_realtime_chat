@@ -20,9 +20,14 @@ class TestMain(unittest.TestCase):
         self.user_id = video_info[0][0]
         self.video_id = int(video_info[0][1])
         self.url = 'https://twitcasting.tv/{user_id}'.format(user_id = self.user_id)
+        self.ytb_url = 'https://www.youtube.com/watch?v=xyHLAcDtCwE'
 
-    def test_to_ass(self):
+    @unittest.skip('block for test')
+    def test_twitcasting_to_ass(self):
         main('%s --output ./test/temp/TestMain.ass --format ass' % self.url)
+
+    def test_youtube_to_ass(self):
+        main('%s --output ./test/temp/TestMain.csv --format csv' % self.ytb_url)
 
 
 if __name__ == "__main__":

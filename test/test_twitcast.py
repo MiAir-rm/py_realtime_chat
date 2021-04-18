@@ -17,8 +17,8 @@ class TestTwitcastingChat(unittest.TestCase):
 
     def test_chat(self):
         session = ChatDownloader()
-        chats = session.run(self.url)
-        data = next(chats)
+        session.run(self.url)
+        data = next(session.chats)
         self.assertIsInstance(data, Chat)
 
     def test_video_id(self):
