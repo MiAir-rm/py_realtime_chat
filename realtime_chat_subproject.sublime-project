@@ -41,6 +41,19 @@
 			"working_dir": "$folder"
 		},
 		{
+			"encoding": "utf-8",
+			"env":
+			{
+				"PYTHONHOME": "D:/Anaconda3",
+				"PYTHONIOENCODING": "utf-8"
+			},
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "update requirements",
+			"selector": "source.python",
+			"shell_cmd": "D:/Anaconda3/Scripts/pipreqs --encoding=utf-8",
+			"working_dir": "$folder"
+		},
+		{
 			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
 			"name": "Anaconda Python Builder",
 			"selector": "source.python",
