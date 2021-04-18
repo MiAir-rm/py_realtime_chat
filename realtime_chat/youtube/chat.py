@@ -31,9 +31,10 @@ class ChatDownloader(object):
         for data in chats:
             chat = Chat(
                 uid = data['author']['id'],
+
                 username = data['author']['name'],
                 timestamp = data['timestamp'] / 1000000,
                 message = data['message']
             )
             self.__chats.put(chat)
-        self.close()
+        self.__chats.close()
