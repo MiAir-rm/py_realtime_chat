@@ -9,7 +9,7 @@
 				"PYTHONIOENCODING": "utf-8"
 			},
 			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-			"name": "run singal file",
+			"name": "run single file",
 			"selector": "source.python",
 			"shell_cmd": "D:/Anaconda3/python $file",
 			"working_dir": "$folder"
@@ -25,6 +25,19 @@
 			"name": "run testcase",
 			"selector": "source.python",
 			"shell_cmd": "D:/Anaconda3/python -m test.main",
+			"working_dir": "$folder"
+		},
+		{
+			"encoding": "utf-8",
+			"env":
+			{
+				"PYTHONHOME": "D:/Anaconda3",
+				"PYTHONIOENCODING": "utf-8"
+			},
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "test single case",
+			"selector": "source.python",
+			"shell_cmd": "D:/Anaconda3/python -m test.$file_base_name",
 			"working_dir": "$folder"
 		},
 		{

@@ -4,15 +4,15 @@ import json
 
 from threading import Thread
 from threading import Event 
-from queue import Queue
 
-from realtime_chat.common import Chat
+from realtime_chat.chats import Chat
+from realtime_chat.chats import Chats
 
 class ChatDownloader(object):
     """docstring for ChatDownloader"""
     def __init__(self):
         super(ChatDownloader, self).__init__()
-        self.__queue = Queue(-1)
+        self.__chats = Chats()
         self.__close_event = Event()
         self.__close_event.clear()
 
@@ -22,8 +22,7 @@ class ChatDownloader(object):
 
     @property
     def chats(self):
-        while True:
-            yield self.__queue.get()
+        return self.__chats.chats
 
     def run(self, url):
         self.__cached_url = url
@@ -39,7 +38,7 @@ class ChatDownloader(object):
         t = Thread(target=app.run_forever, args=tuple())
         t.setDaemon(True)
         t.start()
-        return self.chats
+        return self.__chats
 
     def __on_open(self, ws):
         pass
@@ -54,10 +53,10 @@ class ChatDownloader(object):
                 chat = Chat(
                     uid = data['author']['id'],
                     username = data['author']['name'],
-                    timestamp = data['createdAt'],
+                    timestamp = data['createdAt'] / 1000,
                     message = data['message']
                 )
-                self.__queue.put(chat)
+                self.__chats.put(chat)
         except Exception as ex:
             pass
 

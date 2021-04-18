@@ -4,8 +4,7 @@ import requests as rq
 import sys
 
 from realtime_chat.twitcast import ChatDownloader
-from realtime_chat.common import Chat
-
+from realtime_chat.chats import Chat
 
 class TestTwitcastingChat(unittest.TestCase):
 

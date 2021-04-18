@@ -39,12 +39,3 @@ def create_sub_parser(subparsers, title, name, docs, init_ap):
     init_ap(ap)
     return subparsers
 
-
-class Chat(object):
-    """docstring for Chat"""
-    def __init__(self, uid, username, timestamp, message):
-        super(Chat, self).__init__()
-        self.uid = uid
-        self.username = username
-        self.timestamp = timestamp
-        self.message = message
