@@ -13,6 +13,7 @@ setup(
     url = None,
     entry_points = {
         'console_scripts':[
+            'realtime_chat = realtime_chat.main:main'
         ]
     },
     install_requires = [

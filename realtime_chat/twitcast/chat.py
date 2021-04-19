@@ -13,8 +13,6 @@ class ChatDownloader(object):
     def __init__(self):
         super(ChatDownloader, self).__init__()
         self.__chats = Chats()
-        self.__close_event = Event()
-        self.__close_event.clear()
 
     def get_video_id(self, url):
         user_id = [p for p in url.split('/') if p != ''][-1]
@@ -61,8 +59,8 @@ class ChatDownloader(object):
             pass
 
     def __on_error(self, ws, error):
-        self.__close_event.set()
+        self.__chats.close()
 
     def __on_close(self, ws):
-        self.__close_event.set()
+        self.run(self.__cached_url)
     
