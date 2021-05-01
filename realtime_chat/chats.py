@@ -28,18 +28,16 @@ class Chats(object):
     def chats(self):
         index = 0
 
-        # 先导出缓冲区内容
-        for c in self.__chats:
-            yield c
+        while index < len(self.__chats):
+            yield self.__chats[index]
             index += 1
 
         while not self.__close_event.isSet():
-            if index < len(self.__chats):
+            self.__update_event.wait(20)
+            while index < len(self.__chats):
                 yield self.__chats[index]
                 index += 1
-            else:
-                self.__update_event.clear()
-                self.__update_event.wait(20)
+            self.__update_event.clear()
 
     @property
     def start_timestamp(self):
