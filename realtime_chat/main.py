@@ -7,6 +7,7 @@ from argparse import FileType
 
 from .twitcast import ChatDownloader as TcChatDownloader
 from .youtube import ChatDownloader as YtbChatDownloader
+from .bilibili import ChatDownloader as BLiveChatDownloader
 
 def initArgumentParser(ap):
     ap.add_argument('url', help = '视频网址')
@@ -19,10 +20,12 @@ def initArgumentParser(ap):
 @console_entry(initArgumentParser)
 def main(ap):
     if 'youtube' in ap.url:
-        session = YtbChatDownloader()
+        chatDownloader = YtbChatDownloader()
     elif 'twitcasting' in ap.url:
-        session = TcChatDownloader()
-    chats = session.run(ap.url)
+        chatDownloader = TcChatDownloader()
+    elif 'bilibili' in ap.url:
+        chatDownloader = BLiveChatDownloader()
+    chats = chatDownloader.run(ap.url)
     if ap.format == 'csv':
         chats.to_csv(ap.output)
     elif ap.format == 'ass':
