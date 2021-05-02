@@ -56,7 +56,7 @@ class ChatDownloader(object):
         chat = Chat(
             uid = danmaku.uid,
             username = danmaku.uname,
-            timestamp = danmaku.timestamp,
+            timestamp = danmaku.timestamp / 1000,
             message = danmaku.msg
         )
         self.__chats.put(chat)
@@ -65,7 +65,7 @@ class ChatDownloader(object):
         chat = Chat(
             uid = SuperChatMessage.uid,
             username = SuperChatMessage.uname,
-            timestamp = SuperChatMessage.start_time,
+            timestamp = SuperChatMessage.start_time / 1000,
             message = SuperChatMessage.message
         )
         self.__chats.put(chat)

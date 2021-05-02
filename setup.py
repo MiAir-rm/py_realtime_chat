@@ -19,7 +19,8 @@ setup(
     install_requires = [
         'twitcasting-py',
         'websocket_client',
-        'chat-downloader' 
+        'chat-downloader',
+        'aiohttp'
     ],
     long_description = open("README.md","r", encoding='utf-8').read(),
     long_description_content_type = "text/markdown",
